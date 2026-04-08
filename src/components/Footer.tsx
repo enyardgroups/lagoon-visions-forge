@@ -1,12 +1,11 @@
 import { Link } from "react-router-dom";
 import { Mail, Phone, Linkedin, Twitter, Facebook, Youtube, Instagram } from "lucide-react";
-import { useState } from "react";
 import logo from "@/assets/logo.png";
 import iso27001Logo from "@/assets/ISO-27001-Certification-Novolyze.png";
+import dnbWordmarkLogo from "@/assets/DnB_WORDMARK_RGB_Full-Color.svg";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  const [dnbLogoError, setDnbLogoError] = useState(false);
 
   const offices = [
     {
@@ -22,32 +21,32 @@ const Footer = () => {
     {
       country: "USA",
       email: "Info@lagoontechnologies.com",
-      phones: ["+1 913 735 4276"]
+      phones: ["+1 913 735 4276", "+91 84288 07007"]
     },
     {
       country: "Oman",
       email: "Info@lagoontechnologies.com",
-      phones: ["+971564549360"]
+      phones: ["+971564549360", "+91 84288 07007"]
     },
     {
       country: "Papua New Guinea",
       email: "Info@lagoontechnologies.com",
-      phones: ["+675 77342791"]
+      phones: ["+675 77342791", "+91 84288 07007"]
     }
   ];
 
   return (
     <footer className="bg-black text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
           {/* Company Info */}
           <div className="space-y-4">
             <div className="flex items-center space-x-3">
               <img src={logo} alt="Lagoon" className="h-8 w-auto" />
             </div>
             <p className="text-white/80 leading-relaxed">
-              Leading software development company in UAE, building innovative 
-              enterprise solutions that transform businesses across the Middle East.
+              Lagoon delivers enterprise-ready operational platforms for HR, attendance,
+              vendor workflows, and HSE compliance across global teams.
             </p>
             <div className="flex space-x-4">
               <a 
@@ -102,14 +101,17 @@ const Footer = () => {
           <div className="space-y-4">
             <h3 className="font-semibold text-lg">Products</h3>
             <div className="space-y-2">
-              <Link to="/products/corex" className="block text-white/80 hover:text-primary transition-colors">
-                coreX ERP
+              <Link to="/products/opex-hrms" className="block text-white/80 hover:text-primary transition-colors">
+                Opex HRMS
               </Link>
-              <Link to="/products/timetick" className="block text-white/80 hover:text-primary transition-colors">
-                Time Tick
+              <Link to="/products/timetick-attendance" className="block text-white/80 hover:text-primary transition-colors">
+                Time Tick Attendance
               </Link>
-              <Link to="/products/safex365" className="block text-white/80 hover:text-primary transition-colors">
-                safeX365
+              <Link to="/products/vendor-management" className="block text-white/80 hover:text-primary transition-colors">
+                Vendor Management
+              </Link>
+              <Link to="/products/safex365-hse" className="block text-white/80 hover:text-primary transition-colors">
+                SafeX365 HSE Solution
               </Link>
             </div>
           </div>
@@ -122,13 +124,32 @@ const Footer = () => {
                 About Us
               </Link>
               <Link to="/career" className="block text-white/80 hover:text-primary transition-colors">
-                Career
+                Careers
               </Link>
-              <Link to="/blog" className="block text-white/80 hover:text-primary transition-colors">
-                Blog
+              <Link to="/partners" className="block text-white/80 hover:text-primary transition-colors">
+                Partners
               </Link>
+              <Link to="/contact" className="block text-white/80 hover:text-primary transition-colors">
+                Contact
+              </Link>
+            </div>
+          </div>
+
+          {/* Resources */}
+          <div className="space-y-4">
+            <h3 className="font-semibold text-lg">Resources</h3>
+            <div className="space-y-2">
               <Link to="/documentation" className="block text-white/80 hover:text-primary transition-colors">
                 Documentation
+              </Link>
+              <Link to="/api-reference" className="block text-white/80 hover:text-primary transition-colors">
+                API Reference
+              </Link>
+              <Link to="/case-studies" className="block text-white/80 hover:text-primary transition-colors">
+                Case Studies
+              </Link>
+              <Link to="/status" className="block text-white/80 hover:text-primary transition-colors">
+                Status Page
               </Link>
             </div>
           </div>
@@ -137,31 +158,25 @@ const Footer = () => {
           <div className="space-y-4">
             <h3 className="font-semibold text-lg">Accreditations</h3>
             <div className="space-y-4">
-              <div className="flex items-center">
+              <div className="flex items-center gap-4">
                 <img 
                   src={iso27001Logo} 
                   alt="ISO 27001 Certified" 
-                  className="h-16 w-auto object-contain"
+                  className="h-14 w-auto object-contain bg-white rounded-lg p-1"
+                />
+                <img
+                  src={dnbWordmarkLogo}
+                  alt="Dun and Bradstreet"
+                  className="h-14 w-auto object-contain bg-white rounded-lg p-2"
                 />
               </div>
-              <a 
-                href="https://profiles.dunsregistered.com/TPIN-BAS-004.aspx" 
-                target="_blank" 
+              <a
+                href="https://profiles.dunsregistered.com/TPIN-BAS-004.aspx"
+                target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center hover:opacity-80 transition-opacity"
+                className="text-white/70 text-sm hover:text-primary transition-colors"
               >
-                {dnbLogoError ? (
-                  <div className="bg-white/10 rounded-lg px-4 py-2 flex items-center">
-                    <span className="text-white/80 text-sm font-semibold">DUN & Bradstreet</span>
-                  </div>
-                ) : (
-                  <img 
-                    src="/accreditations/dun-bradstreet.png" 
-                    alt="DUN & Bradstreet Registered" 
-                    className="h-12 w-auto object-contain"
-                    onError={() => setDnbLogoError(true)}
-                  />
-                )}
+                Verify D-U-N-S registration
               </a>
             </div>
           </div>

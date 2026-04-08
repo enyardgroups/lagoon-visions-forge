@@ -2,6 +2,7 @@ import { CheckCircle2, TrendingUp, Users, Award } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import WhatsAppLeadDialog from "@/components/WhatsAppLeadDialog";
 
 interface SuccessStory {
   title: string;
@@ -16,14 +17,14 @@ interface SuccessStory {
 
 const successStories: SuccessStory[] = [
   {
-    title: "Streamlined Operations with coreX ERP",
+    title: "Streamlined Operations with Opex HRMS",
     company: "Tech Solutions UAE",
     challenge: "Managing multiple business processes across departments with disconnected systems led to inefficiencies and data silos.",
-    solution: "Implemented coreX ERP to integrate financial management, supply chain, and HR operations into a unified platform.",
+    solution: "Implemented Opex HRMS to integrate payroll, employee lifecycle, and HR operations into a unified platform.",
     results: [
       "40% reduction in operational costs",
       "60% faster reporting and analytics",
-      "Real-time visibility across all departments",
+      "Real-time visibility across all HR operations",
       "Improved decision-making with data-driven insights"
     ],
     icon: TrendingUp,
@@ -34,7 +35,7 @@ const successStories: SuccessStory[] = [
     title: "Revolutionized Workforce Management",
     company: "First Class Fleet",
     challenge: "Tracking attendance and managing field teams across multiple locations was time-consuming and error-prone.",
-    solution: "Deployed Time Tick GPS-enabled attendance system with mobile-first approach for seamless field operations.",
+    solution: "Deployed Time Tick Attendance with GPS-enabled tracking and mobile-first workflows for field operations.",
     results: [
       "95% accuracy in attendance tracking",
       "50% reduction in administrative time",
@@ -49,7 +50,7 @@ const successStories: SuccessStory[] = [
     title: "Enhanced Safety Compliance",
     company: "Enyard Construction",
     challenge: "Ensuring workplace safety compliance and tracking incidents across multiple construction sites was challenging.",
-    solution: "Implemented safeX365 comprehensive safety management system with incident tracking and risk assessment capabilities.",
+    solution: "Implemented SafeX365 HSE Solution with incident tracking and risk assessment capabilities.",
     results: [
       "70% reduction in workplace incidents",
       "100% compliance with safety regulations",
@@ -163,13 +164,18 @@ const SuccessStories = () => {
           <p className="text-lg text-muted-foreground mb-6">
             Ready to write your own success story?
           </p>
-          <Button 
-            size="lg" 
-            className="px-8 py-4 bg-foreground text-background hover:bg-foreground/90 rounded-xl"
-          >
-            Get Started Today
-            <ArrowRight className="ml-2 w-5 h-5" />
-          </Button>
+          <WhatsAppLeadDialog
+            source="Success Stories - Get Started Today"
+            trigger={
+              <Button
+                size="lg"
+                className="px-8 py-4 bg-foreground text-background hover:bg-foreground/90 rounded-xl"
+              >
+                Get Started Today
+                <ArrowRight className="ml-2 w-5 h-5" />
+              </Button>
+            }
+          />
         </div>
       </div>
     </section>
@@ -177,4 +183,5 @@ const SuccessStories = () => {
 };
 
 export default SuccessStories;
+
 

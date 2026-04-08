@@ -20,21 +20,21 @@ interface Testimonial {
 const testimonials: Testimonial[] = [
   {
     headline: "Transformed Our Operations",
-    content: "Lagoon Technologies has completely transformed how we manage our business operations. Their coreX ERP system streamlined our processes and gave us real-time insights we never had before. The team's expertise and dedication are unmatched.",
+    content: "Lagoon Technologies has completely transformed how we manage our operations. Their Opex HRMS platform streamlined payroll and workforce processes and gave us real-time insights we never had before. The team's expertise and dedication are unmatched.",
     personName: "Ahmed Al Mansoori",
     designation: "CEO",
     company: "Tech Solutions UAE"
   },
   {
     headline: "Outstanding Support & Innovation",
-    content: "Working with Lagoon has been a game-changer. Their Time Tick attendance system eliminated all our workforce management challenges. The GPS tracking and mobile-first approach made it seamless for our field teams. Highly recommend!",
+    content: "Working with Lagoon has been a game-changer. Their Time Tick Attendance system eliminated our workforce management bottlenecks. The GPS tracking and mobile-first approach made it seamless for our field teams. Highly recommend!",
     personName: "Sarah Johnson",
     designation: "Operations Director",
     company: "First Class Fleet"
   },
   {
     headline: "Exceeded All Expectations",
-    content: "The safeX365 safety management system has been instrumental in ensuring our workplace compliance. Lagoon's attention to detail and commitment to safety standards is impressive. Our incident rates have dropped significantly since implementation.",
+    content: "The SafeX365 HSE Solution has been instrumental in ensuring workplace compliance. Lagoon's attention to detail and commitment to safety standards is impressive. Our incident rates have dropped significantly since implementation.",
     personName: "Mohammed Hassan",
     designation: "Safety Manager",
     company: "Enyard Construction"

@@ -1,127 +1,143 @@
-import { ArrowRight, Clock, Shield, BarChart3 } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import corexDashboard from "@/assets/corex-dashboard.jpg";
-import timetickMobile from "@/assets/timetick-mobile.jpg";
-import safexSafety from "@/assets/safex-safety.jpg";
+import {
+  ArrowRight,
+  BriefcaseBusiness,
+  Clock3,
+  Handshake,
+  ShieldCheck,
+} from "lucide-react";
+import { useEffect, useState } from "react";
+
+const products = [
+  {
+    id: "01",
+    label: "HRMS & Payroll",
+    title: "Opex HRMS",
+    subtitle: "Management",
+    description:
+      "Automate payroll, statutory compliance, employee lifecycle, and HR analytics - multi-entity and multi-currency ready.",
+    tags: ["Payroll", "Compliance", "Self-Service", "Analytics", "Lifecycle"],
+    icon: BriefcaseBusiness,
+    surface: "bg-white",
+  },
+  {
+    id: "02",
+    label: "Attendance & Time",
+    title: "Time Tick Attendance",
+    subtitle: "Management",
+    description:
+      "Real-time workforce tracking with biometrics, geo-fencing, shift scheduling, and leave management in one dashboard.",
+    tags: ["Biometric", "Geo-Fence", "Shifts", "Live Tracking", "Leave"],
+    icon: Clock3,
+    surface: "bg-[#f3fbff]",
+  },
+  {
+    id: "03",
+    label: "Vendor & Procurement",
+    title: "Vendor Management",
+    subtitle: "System",
+    description:
+      "Streamline vendor onboarding, PO automation, contract lifecycle, and AI-driven performance scorecards.",
+    tags: ["KYC", "PO Automation", "Scorecards", "Contracts", "SLA"],
+    icon: Handshake,
+    surface: "bg-white",
+  },
+  {
+    id: "04",
+    label: "HSE & Safety",
+    title: "SafeX365",
+    subtitle: "HSE Solution",
+    description:
+      "ISO 45001-ready Health, Safety & Environment platform for incidents, permits, audits, and risk management.",
+    tags: ["Incidents", "Permit-to-Work", "ISO 45001", "Audits", "Risk Matrix"],
+    icon: ShieldCheck,
+    surface: "bg-[#12356f] text-white",
+  },
+];
 
 const ProductShowcase = () => {
-  const products = [
-    {
-      id: "corex",
-      title: "coreX ERP",
-      description: "Complete enterprise resource planning solution designed for modern businesses in the UAE",
-      icon: BarChart3,
-      image: corexDashboard,
-      features: ["Financial Management", "Supply Chain", "HR Integration", "Real-time Analytics"],
-      color: "from-blue-500 to-cyan-500",
-    },
-    {
-      id: "timetick", 
-      title: "Time Tick",
-      description: "AI-powered GPS-enabled attendance system for seamless workforce management",
-      icon: Clock,
-      image: timetickMobile,
-      features: ["GPS Tracking", "Biometric Auth", "Mobile First", "Real-time Reports"],
-      color: "from-green-500 to-emerald-500",
-    },
-    {
-      id: "safex365",
-      title: "safeX365",
-      description: "Comprehensive safety management system ensuring workplace compliance and protection",
-      icon: Shield,
-      image: safexSafety,
-      features: ["Incident Tracking", "Risk Assessment", "Compliance", "Emergency Response"],
-      color: "from-red-500 to-orange-500",
-    },
-  ];
+  const [tick, setTick] = useState(0);
+
+  useEffect(() => {
+    const interval = window.setInterval(() => {
+      setTick((prev) => prev + 1);
+    }, 2000);
+
+    return () => window.clearInterval(interval);
+  }, []);
 
   return (
-    <section className="py-24 relative overflow-hidden">
-      {/* Background floating elements */}
-      <div className="absolute inset-0">
-        <div className="floating-blob w-96 h-96 bg-gradient-to-r from-lime-400 to-emerald-400 top-10 right-0" style={{ animationDelay: '1s' }} />
-        <div className="floating-blob w-72 h-72 bg-gradient-to-r from-lime-300 to-emerald-300 bottom-0 left-10" style={{ animationDelay: '4s' }} />
+    <section id="products" className="py-24 relative overflow-hidden">
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="floating-blob parallax-mid w-72 h-72 bg-gradient-to-r from-lime-300 to-emerald-300 top-8 right-10" />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <div className="inline-block text-sm font-medium text-primary mb-4">
-            Our Products
+        <div className="mb-10 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
+          <div>
+            <div className="inline-block text-sm font-medium text-primary mb-4">Product Suite</div>
+            <h2 className="text-h2 font-bold text-foreground leading-tight">
+              Four Modules.
+              <span className="block hero-gradient">One Platform.</span>
+            </h2>
           </div>
-          <h2 className="text-h2 font-bold text-foreground mb-6">
-            Purpose-built
-            <br />
-            <span className="hero-gradient">enterprise platforms</span>
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            From ERP to workforce and safety, Lagoon products help teams move faster
-            with dependable foundations and clean interfaces.
-          </p>
+          <div className="max-w-md text-muted-foreground">
+            Deploy each module independently or as a fully integrated suite. Built
+            for scale, designed for simplicity.
+            <div className="mt-4 inline-flex items-center gap-2 rounded-xl bg-primary text-white px-5 py-3 font-semibold">
+              View Pricing
+              <ArrowRight className="w-4 h-4" />
+            </div>
+          </div>
         </div>
 
-        {/* Products Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {products.map((product, index) => {
-            const IconComponent = product.icon;
+        <div className="grid grid-cols-1 md:grid-cols-2 overflow-hidden rounded-3xl border border-black/10 bg-white">
+          {products.map((product, idx) => {
+            const Icon = product.icon;
+            const dark = product.surface.includes("text-white");
+            const borderClasses = idx < 2 ? "border-b md:border-b-0 md:border-r" : "md:border-r";
+
             return (
-              <div key={product.id} className="p-6 rounded-2xl border border-black/10 bg-white hover:shadow-float transition-all duration-500">
-                {/* Product Image */}
-                <div className="relative h-48 overflow-hidden rounded-xl mb-6">
-                  <img
-                    src={product.image}
-                    alt={product.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                  <div className="absolute top-4 left-4">
-                    <div className={`w-12 h-12 rounded-xl bg-black/90 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                      <IconComponent className="w-6 h-6 text-white" />
-                    </div>
-                  </div>
+              <div
+                key={product.id}
+                className={`relative min-h-[295px] p-8 ${borderClasses} last:border-r-0 border-black/10 ${product.surface} transition-all duration-500 hover:translate-y-[-2px]`}
+              >
+                <div className="absolute top-0 right-0 w-0 h-0 border-l-[44px] border-l-transparent border-t-[44px] border-t-black/5" />
+                <div className={`text-xs uppercase tracking-[0.18em] font-semibold mb-5 ${dark ? "text-white/70" : "text-slate-500"}`}>
+                  {product.id} - {product.label}
                 </div>
-
-                {/* Content */}
-                <div className="space-y-4">
-                  <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">
-                    {product.title}
-                  </h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    {product.description}
-                  </p>
-
-                  {/* Features */}
-                  <div className="grid grid-cols-2 gap-2">
-                    {product.features.map((feature) => (
-                      <div key={feature} className="flex items-center text-sm text-black/70">
-                        <div className="w-1.5 h-1.5 bg-primary rounded-full mr-2" />
-                        {feature}
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* CTA */}
-                  <Button variant="outline" className="w-full mt-6 border-black/20 text-black hover:border-primary hover:text-primary transition-all rounded-xl">
-                    Learn More
-                    <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </Button>
+                <div className={`w-11 h-11 rounded-xl flex items-center justify-center mb-5 ${dark ? "bg-white/10" : "bg-primary/10"}`}>
+                  <Icon className={`w-5 h-5 ${dark ? "text-white" : "text-primary"}`} />
+                </div>
+                <h3 className={`text-4xl leading-[0.95] font-black mb-3 ${dark ? "text-white" : "text-foreground"}`}>
+                  {product.title}
+                  <span className="block">{product.subtitle}</span>
+                </h3>
+                <p className={`text-base leading-relaxed mb-5 ${dark ? "text-white/80" : "text-muted-foreground"}`}>
+                  {product.description}
+                </p>
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {[0, 1, 2]
+                    .map((offset) => product.tags[((tick + idx + offset) % product.tags.length + product.tags.length) % product.tags.length])
+                    .map((tag, tagIdx) => (
+                    <span
+                      key={`${product.id}-${tag}`}
+                      className={`rounded-md px-3 py-1 text-xs border transition-all duration-500 ${
+                        dark
+                          ? `border-white/25 ${tagIdx === 0 ? "bg-primary/30 text-white scale-105" : "bg-white/10 text-white"}`
+                          : `border-black/10 ${tagIdx === 0 ? "bg-primary text-white scale-105" : "bg-primary/10 text-slate-700"}`
+                      }`}
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                <div className={`inline-flex items-center gap-2 text-sm font-semibold ${dark ? "text-primary" : "text-primary/80"}`}>
+                  <ArrowRight className="w-4 h-4" />
+                  Explore module
                 </div>
               </div>
             );
           })}
-        </div>
-
-        {/* Bottom CTA */}
-        <div className="text-center mt-16">
-          <p className="text-muted-foreground mb-6 text-lg">
-            Ready to transform your business with our innovative solutions?
-          </p>
-          <Button 
-            size="lg" 
-            className="px-8 py-4 bg-foreground text-background hover:bg-foreground/90 rounded-xl"
-          >
-            Schedule a Demo
-            <ArrowRight className="ml-2 w-5 h-5" />
-          </Button>
         </div>
       </div>
     </section>
