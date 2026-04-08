@@ -20,3 +20,4 @@ Please add the following logo files:
 
 The logos will be displayed in a scrolling marquee on the home page. If a logo file is missing, the company name will be displayed as a fallback.
 
+
